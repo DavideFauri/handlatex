@@ -55,7 +55,7 @@ class SetupHelper(dict):
         """
         with file(path, 'w') as f:
             f.write('\\def\\handReleaseInfo{%s, v%s}%%\n%s\n' % (
-                    strftime('%Y/%d/%m'), 
+                    strftime('%Y/%d/%m'),
                     __version__,
                 '\n'.join([('\\def\\hand%s{%s}%%' % (k, v[1]))
                            for k, v in self.iteritems()])))
@@ -70,7 +70,7 @@ class SetupHelper(dict):
         """
         Authenticate a file by crypto-signature.
         """
-        return system('set -x; gpg --local-user %s --armor --detach-sign %s' % 
+        return system('set -x; gpg --local-user %s --armor --detach-sign %s' %
                       (gpgname, path)) == 0
 
 #------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ def count(method):
     return getattr(method.im_self, '_count_%s' % method.__name__, 0)
 
 #------------------------------------------------------------------------------
-class HandError(Exception): 
+class HandError(Exception):
     """Runtime, fatal handlatex error"""
     pass
 
@@ -131,7 +131,7 @@ class Handpar_Process:
     def update(self, lopts):
         self.__dict__.update(lopts)
         self.parangle = self.markovwalk(
-            getattr(self, 'minparangle', 0), 
+            getattr(self, 'minparangle', 0),
             getattr(self, 'maxparangle', 0))
 
     @autocount
@@ -142,11 +142,11 @@ class Handpar_Process:
                  fill(' '.join(
                         [(self.rotatebox(word) if state else word)
                          for state, word in izip(
-                                self.bernouilli(self.freqword), 
-                                [self.wordcount(i) 
+                                self.bernouilli(self.freqword),
+                                [self.wordcount(i)
                                  for i in re.split('\s+', par.group(1))
                                  if len(i) > 0])]))))
-    
+
     @autocount
     def wordcount(self, word):
         return word
@@ -179,7 +179,7 @@ class Cli:
     class ConsoleFormatter(logging.Formatter):
         def format(self, rec):
             return '%s%s' % (
-                ('(ERROR) ' if rec.levelno >= logging.ERROR else ''), 
+                ('(ERROR) ' if rec.levelno >= logging.ERROR else ''),
                 '%s%s' % (rec.msg[0].upper(), rec.msg[1:]))
 
     class LateStream:
@@ -187,7 +187,7 @@ class Cli:
             self.f = None
         def open(self, filename, *args):
             self.f = file(filename, *args)
-        def write(self, *args): 
+        def write(self, *args):
             if self.f is not None:
                 self.f.write(*args)
         def flush(self, *args):
@@ -220,21 +220,21 @@ class Cli:
                 print >> stream, msg
         else:
             debug('operation completed successfully')
-            info(', '.join(['%d %s' % (count(getattr(self.handpar, name)), 
+            info(', '.join(['%d %s' % (count(getattr(self.handpar, name)),
                                        desc)
                             for desc, name in (
-                            ('paragraphs', '__call__'), 
-                            ('words', 'wordcount'), 
+                            ('paragraphs', '__call__'),
+                            ('words', 'wordcount'),
                             ('rotated words', 'rotatebox'))]))
         finally:
-            if hasattr(self.log.f, 'name'):                
+            if hasattr(self.log.f, 'name'):
                 info('high-level transcript written on "%s"' % self.log.f.name)
 
     def _cli(self, args, console):
         """Process a document based on the command line"""
 
         # Set basic console logger
-        logging.basicConfig(level=logging.DEBUG, 
+        logging.basicConfig(level=logging.DEBUG,
                             format='%(asctime)s %(levelname)s %(message)s',
                             stream=self.log)
 
@@ -250,7 +250,7 @@ class Cli:
             %prog [options] input_file
 
             Process the LaTeX input_file with the handwriting driver.
-            ''').strip(), 
+            ''').strip(),
                          version = '%%prog %s\n%s' % (__version__, __copyright__)
                          )
 
@@ -268,10 +268,10 @@ class Cli:
 
     	# Open file log
         self.log.open('%s.hlog' % basename, 'w')
-          
+
     	# Welcome message
         info('this is handLaTex %s' % __version__)
-        
+
     	# Load the file
         debug('loading "%s"' % args[0])
         doc = file(args[0]).read()
@@ -286,11 +286,11 @@ class Cli:
         # 2) the document usepackage options (that's the normal way)
         # 3) handlatex command line (forced parameters)
         self.lopts = dict([(k, v[1]) for k, v in defaults.iteritems()] +
-                          [(k, defaults[k][0](v)) for k, v in 
+                          [(k, defaults[k][0](v)) for k, v in
                            [[i.strip() for i in keyval.split('=')]
                             for keyval in m.group(1).split(',')
                             if len(keyval.strip()) > 0]] +
-                          [(optname, getattr(options, optname)) 
+                          [(optname, getattr(options, optname))
                            for optname in defaults
                            if getattr(options, optname) is not None])
         self.handpar.update(self.lopts)
@@ -301,14 +301,14 @@ class Cli:
             doc = doc.decode(self.lopts['encoding'])
         except (UnicodeDecodeError, LookupError), e:
             raise HandError(
-                'decoding the document failed (bad encoding parameter?), %s' % 
+                'decoding the document failed (bad encoding parameter?), %s' %
                 e)
 
     	# Process hand paragraphs one by one.
         debug('randomizing the document...')
-        doc = re.sub('\\\\begin{handpar}([^}]*)\\\\end{handpar}', 
+        doc = re.sub('\\\\begin{handpar}([^}]*)\\\\end{handpar}',
                      self.handpar, doc, re.MULTILINE)
-    
+
     	# Output it
         outname = '%s.htex' % basename
         with file(outname, 'w') as out:
@@ -328,5 +328,5 @@ class Cli:
         debug('invoking driver as "%s"...' % cmd)
         if system(cmd) != 0:
             raise HandError('driver "%s" failed' % self.lopts['driver'])
-        
+
 cli = Cli()
