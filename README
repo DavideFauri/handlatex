@@ -1,0 +1,156 @@
+                            handLaTeX Release Notes
+
+   Sylvain Fourmanoit
+   <[1]syfou@users.sourceforge.net>
+   version 1.0.0
+
+   Latest version of this document is available [2]here. Project homepage is
+   [3]there.
+
+What is handLaTex?
+
+   handLatex makes it easy to inject automated, pseudo-random variations in
+   [4]LaTeX documents' output reproducing the typical quirks of a left to
+   right, top to bottom handwriting. It has two components:
+
+    1. a LaTeX package, hand, that can be included in any valid LaTeX
+       document.
+
+    2. a specialized command-line frontend, handlatex, able to process LaTeX
+       documents using the hand package.
+
+Requirements
+
+     * A working TeX distribution, supporting LaTeX 2e (originally developped
+       on [5]TeX Live)
+
+     * [6]Python 2.5.x
+
+Installation
+
+     * The hand package (composed of the files hand.dtx, hand.ins and
+       hand.def) should be installed as any other LaTeX package, following
+       your local TeX distribution's documentation.
+
+     * handlatex should be installed as any other Python module, using the
+       provided distutils script (setup.py). Typical invokation will be, with
+       proper privileges:
+
+ python setup.py install
+
+Usage
+
+   The hand package comes fully documented: you can usually get a local
+   version of the manual by invoking your favorite LaTeX driver on hand.dtx.
+   The lasted version can be found pre-compiled [7]here, in [8]PDF.
+
+   Once you have a valid LaTeX document using hand, you can compile it by
+   invoking handlatex on it. For the sake of completeness, below is
+   reproduced its manual page (handlatex.1).
+
+   handLaTeX Command Line Frontend Manual Page
+
+ HANDLATEX(1)                     User Commands                    HANDLATEX(1)
+
+
+
+ NAME
+        handlatex - manual page for handlatex 1.0.0
+
+ SYNOPSIS
+        handlatex [options] input_file
+
+ DESCRIPTION
+        Process the LaTeX input_file with the handwriting driver.
+
+ OPTIONS
+        --version
+               show program's version number and exit
+
+        -h, --help
+               show this help message and exit
+
+        --lowwordangle=LOWWORDANGLE
+               force  lowwordangle option (see hand package doc; default value:
+               -2)
+
+        --maxparscale=MAXPARSCALE
+               force maxparscale option (see hand package doc;  default  value:
+               1.25)
+
+        --minparscale=MINPARSCALE
+               force  minparscale  option (see hand package doc; default value:
+               0.8)
+
+        --encoding=ENCODING
+               force encoding option (see  hand  package  doc;  default  value:
+               utf-8)
+
+        --highwordangle=HIGHWORDANGLE
+               force highwordangle option (see hand package doc; default value:
+               2)
+
+        --driver=DRIVER
+               force driver option (see hand package doc; default value: latex)
+
+        --minparangle=MINPARANGLE
+               force  minparangle  option (see hand package doc; default value:
+               -2)
+
+        --freqword=FREQWORD
+               force freqword option (see hand package doc; default value: 0.4)
+
+        --maxparangle=MAXPARANGLE
+               force  maxparangle  option (see hand package doc; default value:
+               2)
+
+ COPYRIGHT
+        Copyright (C) 2008 Sylvain Fourmanoit <syfou@users.sourceforge.net>
+
+        This is free software. You may redistribute  copies  of  it  under  the
+        terms    of    the    GNU    General    Public    License   version   2
+        <http://www.gnu.org/licenses/gpl2.html>.  There is NO WARRANTY, to  the
+        extent permitted by law.
+
+
+
+ handlatex 1.0.0                  February 2008                    HANDLATEX(1)
+
+   Here is a demo document, [9]sample.tex, that can be processed on TeX Live
+   using:
+
+ handlatex sample.tex
+
+   That will typically results in [10]this (PDF) being generated.
+
+Changes
+
+   Version 1.0.0
+
+           initial public handLaTeX release
+
+Legalese
+
+   Copyright (c) 2008 Sylvain Fourmanoit <[11]syfou@users.sourceforge.net>
+
+   This is free software. You may redistribute copies of it under the
+   [12]terms of the GNU General Public License version 2 (see also
+   [13]COPYING). There is NO WARRANTY, to the extent permitted by law.
+
+   Version 1.0.0
+   Last updated 17-Feb-2008 13:54:45 EDT
+
+Links:
+1. mailto:syfou@users.sourceforge.net/
+2. http://handlatex.googlecode.com/svn/trunk/README.html
+3. http://handlatex.googlecode.com/
+4. http://en.wikipedia.org/wiki/LaTeX
+5. http://www.tug.org/texlive/
+6. http://www.python.org/
+7. http://handlatex.googlecode.com/svn/trunk/hand.pdf
+8. http://en.wikipedia.org/wiki/Portable_Document_Format
+9. sample.tex
+10. http://handlatex.googlecode.com/svn/trunk/sample.pdf
+11. mailto:syfou@users.sourceforge.net/
+12. http://www.gnu.org/licenses/gpl2.html
+13. COPYING

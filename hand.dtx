@@ -1,0 +1,340 @@
+% \iffalse
+%% File: hand.dtx
+%% Copyright (C) 2008 Sylvain Fourmanoit <syfou@users.sourceforge.net>
+%%
+%% This code is released under the terms of the GNU General Public License
+%% (GPL), version 2. You should have received a complete copy of the licence
+%% along the software: see COPYING.
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the 'Software'), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in
+%% all copies of the Software and its documentation and acknowledgment shall be
+%% given in the documentation and software packages that this Software was used.
+%%
+%% THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+%% ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+%% WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%%
+%% The LaTeX part of this package consists of the files hand.dtx, hand.def and
+%% hand.ins.
+%%
+%<hand>\input{hand.def}%
+%<hand>\ProvidesPackage{hand}[\handReleaseInfo\space Handwriting environment]%
+%<hand>\NeedsTeXFormat{LaTeX2e}%
+%<hand>\RequirePackage{keyval}%
+%<hand>\RequirePackage{rotating}%
+%<hand>\RequirePackage{setspace}%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[
+  bookmarks=true,
+  pdfstartview=FitH,
+  colorlinks=True,	 % OK, so I probably shoudn't depend on that, but hey -
+  urlbordercolor={1 1 1} % It seems to be included de facto on most base LaTeX 
+]{hyperref} 		 % environments these days...
+\usepackage{amssymb}     % Idem.
+\def\handLaTeXRevision{dummy}
+\usepackage{hand}
+\begin{document}
+  \title{The \texttt{hand} package}
+  \author{Sylvain Fourmanoit\\ \href{mailto:syfou@users.sourceforge.net}
+    {syfou@users.sourceforge.net}}
+  \date{\handReleaseInfo\thanks{Latest version available at all time from
+        \url{http://code.google.com/p/handlatex/}.}}
+  \maketitle
+  \DocInput{hand.dtx}
+\end{document}
+%</driver>
+% \fi
+% \iffalse
+%<*hand>
+% \fi
+%%
+% \newcommand{\comment}[1]{\fbox{\begin{minipage}{.9\linewidth}#1\end{minipage}}}
+%
+% \begin{abstract}
+% The \texttt{hand} package is the \LaTeX\ interface to the special-purpose
+% \texttt{handlatex} frontend. It provides a simple environment, \cmd{\handpar},
+% that can be used to inject seemingly random variations in placement,
+% interlining and orientation of paragraphs, as well as visual word
+% shifting. Combined with appropriate fonts, it reasonably mimics the typical
+% rendering of a sloppy handwritten text on delinated paper.
+% \end{abstract}
+%
+% \section{Usage}
+%
+% \subsection{Invokation}
+%
+% Once installed, the \texttt{hand} package can be included in a \LaTeX\ 
+% document preamble with the usual:
+% \begin{verbatim}
+% \usepackage[]{hand}\end{verbatim}
+%
+% \subsection{Mandatory \texttt{handlatex} Frontend}
+%
+% Any document using \texttt{hand} must be compiled through the special-purpose
+% \texttt{handlatex} frontend (shipping with this package); this
+% frontend will in turn invoke some \LaTeX-capable backend (\texttt{latex},
+% \texttt{pdflatex}, etc.), specifiable by the user (see \texttt{driver} option
+% below), to generate the final output.\\
+%
+% Have a look at the provided \texttt{README} if you need further information on
+% the frontend. Online help is also available via \texttt{handlatex --help}.
+%
+% \section{User Interface}
+% \begin{macro}{handpar}
+%
+% The \cmd{\handpar} environment is the only one from the \texttt{hand} package
+% you should be using directly; it basically randomizes the appearance of the
+% enclosed paragraph to give it a more ``handwritten'' look. Typical use would
+% look like:
+%
+% \begin{verbatim}
+% \begin{handpar}
+% Lorem ipsum dolor sit amet, feugiat ad metus vestibulum at
+% eget. Condimentum est dictumst, quis cras congue et turpis, ornare
+% lacinia hendrerit platea in. Nulla est proin pellentesque hendrerit
+% nulla vitae.
+% \end{handpar}\end{verbatim}
+%
+% Paragraph and words orientation as well as linespacing will change
+% pseudo-randomly, according to package options, as specified below.  A demo
+% document using \texttt{xelatex} from \TeX\,Live, \texttt{sample.tex}, is
+% distributed along the package.
+% \end{macro}
+%
+% \section{Options}
+% Options are key-value pairs, specified when including the \texttt{hand}
+% package, like this:
+% \begin{verbatim}
+% \usepackage[driver=pdflatex, freqword=0.05]{hand}\end{verbatim}
+%
+% \noindent Options set this way can be overruled directly from the command
+% line; each key presented below can be set using a ``gnu-style'' long argument
+% passed to \texttt{handlatex}: see \texttt{handlatex --help} for details.
+%
+% \begin{macro}{driver}
+% Used by \texttt{handlatex} to determine which backend to invoke (\texttt{latex},
+% \texttt{pdflatex}, \texttt{xelatex}, etc.).\\
+% \textbf{Default value}: \texttt{\handdriver}
+% \end{macro}
+%%
+% \comment{
+% The \texttt{handlatex} frontend is just a pre-processor: at compilation time,
+% the real heavy-lifting will be performed by the selected \texttt{driver},
+% automatically called by \texttt{handlatex}. The document should follow whatever
+% requirements this \texttt{driver} has.
+% }
+%
+% \begin{macro}{encoding}
+% Document character set used for input (\texttt{ascii}, \texttt{latin1},
+% \texttt{utf-8}, etc.).\\
+% \textbf{Default value}: \texttt{\handencoding}
+% \end{macro}
+%
+% \comment{ If ever the document encoding is not a strict superset of ASCII,
+% \texttt{handlatex} might not be able to parse the document at all, let alone
+% identify the \texttt{encoding} option! In this case, you can always force
+% encoding selection right on the command line: \texttt{handlatex
+% --encoding=some\_encoding ...}  }
+%
+% \begin{macro}{minparangle}
+% The minimal integer value in degrees the \cmd{\handpar} environment should
+% be rotated by (around its lower left corner, counterclockwize).\\
+% \textbf{Default value}: \handminparangle
+% \end{macro}
+%
+% \begin{macro}{maxparangle}
+% The maximal integer value in degrees the \cmd{\handpar} environment should
+% be rotated by (around its lower left corner, counterclockwize).\\
+% \textbf{Default value}: \handmaxparangle
+% \end{macro}
+%
+% \comment{
+% The paragrah angle 
+% ($ \mathrm{parangle} \in [\,\mathrm{minparangle}, \mathrm{maxparangle}\,] $), 
+% follows a simple discrete Markov walk: consecutive \cmd{\handpar}
+% environements will be rotated by angles no more different than one degree.
+% }
+%
+% \begin{macro}{minparscale}
+% The minimal float value the \cmd{\baselineskip} or the \cmd{\handpar}
+% environment should be multiplied by.\\
+% \textbf{Defaul value}: \handminparscale
+% \end{macro}
+%
+% \begin{macro}{maxparscale}
+% The maximal float value the \cmd{\baselineskip} or the \cmd{\handpar}
+% environment should be multiplied by.\\
+% \textbf{Defaul value}: \handmaxparscale
+% \end{macro}
+%
+% \comment{
+% Paragrah interlining (``scaling'') is a uniform variable where 
+% $ \mathrm{parscale} \in [\,\mathrm{minparscale}, \mathrm{maxparscale}]$.
+% }
+%
+% \begin{macro}{lowwordangle}
+% The low angle in degree any picked word (see \texttt{freqword} below)
+% belonging to the \cmd{\handpar} environment can be rotated around its
+% bottom-right corner.\\
+% \textbf{Default value}: \handlowwordangle
+% \end{macro}
+%
+% \begin{macro}{highwordangle}
+% The high angle in degree any picked word (see \texttt{freqword} below)
+% belonging to the \cmd{\handpar} environment can be rotated around its
+% bottom-right corner.\\
+% \textbf{Default value}: \handhighwordangle
+% \end{macro}
+%
+% \comment{
+% Picked words rotation will be either \texttt{lowwordangle} or
+% \texttt{highwordangle}, with the same odds.
+% }
+%
+% \begin{macro}{freqword}
+% The frequency at which a word belonging to the \cmd{\handpar} environment
+% should be ``visual shifted'' using the \texttt{lowwordangle} and
+% \texttt{highwordangle} options above. \\
+% \textbf{Default value}: \handfreqword
+% \end{macro}
+%
+% \comment{
+% in \texttt{handlatex}, word selection is implemented as a mere Bernouilli
+% variable (i.e. a sequence of independent Bernouilli trials of probability $
+% \mathrm{freqword}$).
+% }
+%
+% \section{Limitations / Bugs}
+%
+% \begin{itemize}
+% \item \cmd{\handpar} parsing in \texttt{handlatex} is pretty limited right
+% now: it chokes silently and bails out on any closing brace (``\}'') used
+% inside a \cmd{\handpar} environment; this basically means that if you try to
+% use any \LaTeX\ command at all inside one of them, you will end up with a
+% plain, unstylised paragraph...
+%
+% \item \texttt{handlatex} is implemented in Python, not as a set of
+% \TeX\ macros or in \Web2C\footnote{I tried writing a pure
+% \TeX\ implementation for two days... For the life of me, I just couldn't; I
+% swear the fact a language is Turing-complete will no longer be a compelling
+% enough argument for me to bite the bullet -- so is \texttt{brainfuck}, after
+% all.}: from a pure \LaTeX\ point of view, it is bound to be less
+% portable.  \end{itemize}
+%
+% \section{Legalese}
+%
+% Copyright\copyright\ 2008 Sylvain Fourmanoit
+% $<$\href{mailto:syfou@users.sourceforge.net}{syfou@users.sourceforge.net}$>$
+% \\
+%
+%  This documentation and associated code is released under the terms of the
+% \href{http://www.gnu.org/licenses/gpl2.html}{GNU General Public License
+% (GPL), version 2}. You should have received a complete copy of the licence
+% along the software: see \texttt{COPYING}.\\
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the ``Software''), to
+% deal in the Software without restriction, including without limitation the
+% rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+% sell copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:\\
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies of the Software and its documentation and acknowledgment shall be
+% given in the documentation and software packages that this Software was
+% used.\\ 
+%
+% {\sc The software is provided ``as is'', without warranty of any kind,
+% express or implied, including but not limited to the warranties of
+% merchantability, fitness for a particular purpose and noninfringement. in no
+% event shall the authors be liable for any claim, damages or other liability,
+% whether in an action of contract, tort or otherwise, arising from, out of or
+% in connection with the software or the use or other dealings in the
+% software.}
+%
+% \section{The Code}
+% \subsection{Initial imports and checks}
+%    \begin{macrocode}
+\@ifundefined{handLaTeXRevision}{% 
+\PackageError{hand}{handlatex is required to compile this document}}%
+%    \end{macrocode}
+%
+% \subsection{Options handling}
+%    \begin{macrocode}
+\define@key{interface}{driver}[1]{\def\hand@driver{#1}}%
+\define@key{interface}{encoding}[1]{\def\hand@encoding{#1}}%
+\define@key{interface}{minparangle}[1]{\def\hand@minparangle{#1}}%
+\define@key{interface}{maxparangle}[1]{\def\hand@maxparangle{#1}}%
+\define@key{interface}{minparscale}[1]{\def\hand@minparscale{#1}}%
+\define@key{interface}{maxparscale}[1]{\def\hand@maxparscale{#1}}%
+\define@key{interface}{lowwordangle}[1]{\def\hand@lowwordangle{#1}}%
+\define@key{interface}{highwordangle}[1]{\def\hand@highwordangle{#1}}%
+\define@key{interface}{freqword}[1]{\def\hand@freword{#1}}%
+%%
+\newcommand{\Parse@options}{}%
+\long\def\Parse@Options#1\@nil{\setkeys{interface}{#1}}%
+\DeclareOption*{\expandafter\Parse@Options\CurrentOption\@nil}%
+\ProcessOptions%
+%%
+\newcommand{\hand@check}[2]{\@ifundefined{#1}{\@namedef{#1}{#2}}{}}%
+\hand@check{hand@driver}{\handdriver}%
+\hand@check{hand@encoding}{\handencoding}%
+\hand@check{hand@minparangle}{\handminparangle}%
+\hand@check{hand@maxparangle}{\handmaxparangle}%
+\hand@check{hand@minparscale}{\handminparscale}%
+\hand@check{hand@maxparscale}{\handmaxparscale}%
+\hand@check{hand@lowwordangle}{\handlowwordangle}%
+\hand@check{hand@highwordangle}{\handhighwordangle}%
+\hand@check{hand@freqword}{\handfreqword}%
+\PackageInfo{hand}{ %
+  driver: \hand@driver, %
+  encoding: \hand@encoding, %
+  minparangle: \hand@minparangle, %
+  maxparangle: \hand@maxparangle, %
+  minparscale: \hand@minparscale, %
+  maxparscale: \hand@maxparscale, %
+  lowwordangle: \hand@lowwordangle, %
+  highwordangle: \hand@highwordangle, %
+  freqword: \hand@freqword }%
+%%
+%    \end{macrocode}
+% \subsection{The Environments}
+%    \begin{macrocode}
+\newcommand{\handword}[2]%
+{%
+\rotatebox[origin=rb]{#1}{#2}%
+}%
+%%
+\newcommand{\hand@parfullbeg}[2]%
+{%
+\noindent\begin{turn}{#1}\begin{minipage}{\linewidth}%
+\begin{spacing}{#2}%
+}%
+%%
+\newcommand{\hand@parfullend}%
+{\end{spacing}\end{minipage}\end{turn}}%
+%%
+\newenvironment{handparfull}[2]%
+{\hand@parfullbeg{#1}{#2}}{\hand@parfullend}%
+%%
+\newenvironment{handpar}%
+{\hand@parfullbeg{0}{1}}{\hand@parfullend}%
+%    \end{macrocode}
+% \noindent $\blacksquare$
+%%
+% \iffalse
+%</hand>
+% \fi
+%
+\endinput

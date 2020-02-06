@@ -1,0 +1,10 @@
+\def\handReleaseInfo{2008/17/02, v1.0.0}%
+\def\handlowwordangle{-2}%
+\def\handmaxparscale{1.25}%
+\def\handminparscale{0.8}%
+\def\handencoding{utf-8}%
+\def\handhighwordangle{2}%
+\def\handdriver{latex}%
+\def\handminparangle{-2}%
+\def\handfreqword{0.4}%
+\def\handmaxparangle{2}%

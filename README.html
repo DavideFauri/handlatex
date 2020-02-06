@@ -1,0 +1,499 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.1.0" />
+<style type="text/css">
+/* Debug borders */
+p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
+/*
+  border: 1px solid red;
+*/
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+tt {
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  font-family: sans-serif;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  border-bottom: 2px solid silver;
+  padding-top: 0.5em;
+}
+
+div.sectionbody {
+  font-family: serif;
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revision {
+  font-family: sans-serif;
+}
+span.high {
+  font-weight: bold;
+}
+
+div#footer {
+  font-family: sans-serif;
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble,
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-right: 10%;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+
+div.listingblock {
+  margin-right: 0%;
+}
+div.listingblock > div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock > div.content {
+  padding-left: 2.0em;
+}
+
+div.attribution {
+  text-align: right;
+}
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 2px solid silver;
+}
+
+div.exampleblock > div.content {
+  border-left: 2px solid silver;
+  padding: 0.5em;
+}
+
+div.manualblock {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+div.verseblock div.content {
+  white-space: pre;
+}
+
+div.imageblock div.content { padding-left: 0; }
+div.imageblock img { border: 1px solid silver; }
+span.image img { border-style: none; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: italic;
+}
+dd > *:first-child {
+  margin-top: 0;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.olist2 {
+  list-style-type: lower-alpha;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+tfoot {
+  font-weight: bold;
+}
+
+div.hlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+td.hlist1 {
+  vertical-align: top;
+  font-style: italic;
+  padding-right: 0.8em;
+}
+td.hlist2 {
+  vertical-align: top;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+}
+/* Workarounds for IE6's broken and incomplete CSS2. */
+
+div.sidebar-content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+div.sidebar-title, div.image-title {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+div.listingblock div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock-content {
+  padding-left: 2.0em;
+}
+
+div.exampleblock-content {
+  border-left: 2px solid silver;
+  padding-left: 0.5em;
+}
+
+/* IE6 sets dynamically generated links as visited. */
+div#toc a:visited { color: blue; }
+</style>
+<title>handLaTeX Release Notes</title>
+</head>
+<body>
+<div id="header">
+<h1>handLaTeX Release Notes</h1>
+<span id="author">Sylvain Fourmanoit</span><br />
+<span id="email"><tt>&lt;<a href="mailto:syfou@users.sourceforge.net">syfou@users.sourceforge.net</a>&gt;</tt></span><br />
+<span id="revision">version 1.0.0</span>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<!--
+Source for this document and the machinery to build it are available from
+the public code repository:
+
+http://code.google.com/p/handlatex/source/checkout
+!-->
+<div class="sidebarblock">
+<div class="sidebar-content">
+<p>Latest version of this document is available
+<a href="http://handlatex.googlecode.com/svn/trunk/README.html">here</a>. Project
+homepage is <a href="http://handlatex.googlecode.com/">there</a>.</p>
+</div></div>
+</div>
+</div>
+<h2>What is handLaTex?</h2>
+<div class="sectionbody">
+<p>handLatex makes it easy to inject automated, pseudo-random variations in
+<a href="http://en.wikipedia.org/wiki/LaTeX">LaTeX</a> documents' output reproducing the
+typical quirks of a left to right, top to bottom handwriting. It has two
+components:</p>
+<ol>
+<li>
+<p>
+a LaTeX package, <tt>hand</tt>, that can be included in any valid LaTeX document.
+</p>
+</li>
+<li>
+<p>
+a specialized command-line frontend, <tt>handlatex</tt>, able to process LaTeX
+  documents using the <tt>hand</tt> package.
+</p>
+</li>
+</ol>
+</div>
+<h2>Requirements</h2>
+<div class="sectionbody">
+<ul>
+<li>
+<p>
+A working TeX distribution, supporting LaTeX 2e (originally
+  developped on <a href="http://www.tug.org/texlive/">TeX Live</a>)
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.python.org/">Python</a> 2.5.x
+</p>
+</li>
+</ul>
+</div>
+<h2>Installation</h2>
+<div class="sectionbody">
+<ul>
+<li>
+<p>
+The <tt>hand</tt> package (composed of the files <tt>hand.dtx</tt>, <tt>hand.ins</tt> and
+  <tt>hand.def</tt>) should be installed as any other LaTeX package, following your
+  local TeX distribution's documentation.
+</p>
+</li>
+<li>
+<p>
+<tt>handlatex</tt> should be installed as any other Python module, using the provided
+  distutils script (<tt>setup.py</tt>). Typical invokation will be, with proper
+  privileges:
+</p>
+</li>
+</ul>
+<div class="listingblock">
+<div class="content">
+<pre><tt>python setup.py install</tt></pre>
+</div></div>
+</div>
+<h2>Usage</h2>
+<div class="sectionbody">
+<p>The <tt>hand</tt> package comes fully documented: you can usually get a local version
+of the manual by invoking your favorite LaTeX driver on <tt>hand.dtx</tt>. The lasted
+version can be found pre-compiled
+<a href="http://handlatex.googlecode.com/svn/trunk/hand.pdf">here</a>, in
+<a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF</a>.</p>
+<p>Once you have a valid LaTeX document using <tt>hand</tt>, you can compile it by
+invoking <tt>handlatex</tt> on it. For the sake of completeness, below is reproduced
+its manual page (<tt>handlatex.1</tt>).</p>
+<div class="manualblock">
+<div class="title">handLaTeX Command Line Frontend Manual Page</div>
+<div class="content"><tt><pre>
+<span class="low">HANDLATEX(1)                     User Commands                    HANDLATEX(1)</span>
+
+
+
+<span class="high">NAME</span>
+<span class="low">       handlatex - manual page for handlatex 1.0.0</span>
+
+<span class="high">SYNOPSIS</span>
+<span class="low">       </span><span class="high">handlatex</span><span class="low"> [</span><span class="high">options</span><span class="low">] </span><span class="high">input_file</span>
+
+<span class="high">DESCRIPTION</span>
+<span class="low">       Process the LaTeX input_file with the handwriting driver.</span>
+
+<span class="high">OPTIONS</span>
+<span class="low">       </span><span class="high">--version</span>
+<span class="low">              show program's version number and exit</span>
+
+<span class="low">       </span><span class="high">-h</span><span class="low">, </span><span class="high">--help</span>
+<span class="low">              show this help message and exit</span>
+
+<span class="low">       </span><span class="high">--lowwordangle</span><span class="low">=</span><span class="high">LOWWORDANGLE</span>
+<span class="low">              force  lowwordangle option (see hand package doc; default value:</span>
+<span class="low">              </span><span class="high">-2</span><span class="low">)</span>
+
+<span class="low">       </span><span class="high">--maxparscale</span><span class="low">=</span><span class="high">MAXPARSCALE</span>
+<span class="low">              force maxparscale option (see hand package doc;  default  value:</span>
+<span class="low">              1.25)</span>
+
+<span class="low">       </span><span class="high">--minparscale</span><span class="low">=</span><span class="high">MINPARSCALE</span>
+<span class="low">              force  minparscale  option (see hand package doc; default value:</span>
+<span class="low">              0.8)</span>
+
+<span class="low">       </span><span class="high">--encoding</span><span class="low">=</span><span class="high">ENCODING</span>
+<span class="low">              force encoding option (see  hand  package  doc;  default  value:</span>
+<span class="low">              utf-8)</span>
+
+<span class="low">       </span><span class="high">--highwordangle</span><span class="low">=</span><span class="high">HIGHWORDANGLE</span>
+<span class="low">              force highwordangle option (see hand package doc; default value:</span>
+<span class="low">              2)</span>
+
+<span class="low">       </span><span class="high">--driver</span><span class="low">=</span><span class="high">DRIVER</span>
+<span class="low">              force driver option (see hand package doc; default value: latex)</span>
+
+<span class="low">       </span><span class="high">--minparangle</span><span class="low">=</span><span class="high">MINPARANGLE</span>
+<span class="low">              force  minparangle  option (see hand package doc; default value:</span>
+<span class="low">              </span><span class="high">-2</span><span class="low">)</span>
+
+<span class="low">       </span><span class="high">--freqword</span><span class="low">=</span><span class="high">FREQWORD</span>
+<span class="low">              force freqword option (see hand package doc; default value: 0.4)</span>
+
+<span class="low">       </span><span class="high">--maxparangle</span><span class="low">=</span><span class="high">MAXPARANGLE</span>
+<span class="low">              force  maxparangle  option (see hand package doc; default value:</span>
+<span class="low">              2)</span>
+
+<span class="high">COPYRIGHT</span>
+<span class="low">       Copyright (C) 2008 Sylvain Fourmanoit &lt;syfou@users.sourceforge.net&gt;</span>
+
+<span class="low">       This is free software. You may redistribute  copies  of  it  under  the</span>
+<span class="low">       terms    of    the    GNU    General    Public    License   version   2</span>
+<span class="low">       &lt;http://www.gnu.org/licenses/gpl2.html&gt;.  There is NO WARRANTY, to  the</span>
+<span class="low">       extent permitted by law.</span>
+
+
+
+<span class="low">handlatex 1.0.0                  February 2008                    HANDLATEX(1)</span>
+</pre></tt></div></div>
+<p>Here is a demo document, <a href="sample.tex">sample.tex</a>, that can be processed on
+TeX Live using:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>handlatex sample.tex</tt></pre>
+</div></div>
+<p>That will typically results in
+<a href="http://handlatex.googlecode.com/svn/trunk/sample.pdf">this</a> (PDF)
+being generated.</p>
+</div>
+<h2>Changes</h2>
+<div class="sectionbody">
+<dl>
+<dt>
+Version 1.0.0
+</dt>
+<dd>
+<p>
+        initial public handLaTeX release
+</p>
+</dd>
+</dl>
+</div>
+<h2>Legalese</h2>
+<div class="sectionbody">
+<p>Copyright &#169; 2008 Sylvain Fourmanoit
+&lt;<a href="mailto:syfou@users.sourceforge.net">syfou@users.sourceforge.net</a>&gt;</p>
+<p>This is free software. You may redistribute copies of it under the
+<a href="http://www.gnu.org/licenses/gpl2.html">terms of the GNU General Public License
+version 2</a> (see also <a href="COPYING">COPYING</a>). There is NO WARRANTY, to the
+extent permitted by law.</p>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0.0<br />
+Last updated 17-Feb-2008 13:54:45 EDT
+</div>
+</div>
+</body>
+</html>

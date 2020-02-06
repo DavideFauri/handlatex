@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: handlatex
+Version: 1.0.0
+Summary: Handwriting LaTeX driver and package
+Home-page: http://code.google.com/p/handlatex/
+Author: Sylvain Fourmanoit
+Author-email: syfou@users.sourceforge.net
+License: GPL2
+Description: UNKNOWN
+Platform: posix
