@@ -85,14 +85,9 @@ class Sdist(sdist.sdist):
 # ------------------------------------------------------------------------------
 class Config(config.config):
     def run(self):
-        if hexversion < 0x20500F0:
+        if hexversion < 0x30500F0:
             raise DistutilsError(
-                "Python interpreter is too old: python >= 2.5.0 "
-                + "needed, %s detected" % version[:5]
-            )
-        elif hexversion > 0x3000000:
-            raise DistutilsError(
-                "Python interpreter is too new: python 2.5.x or 2.6.x "
+                "Python interpreter is too old: python >= 3.5.0 "
                 + "needed, %s detected" % version[:5]
             )
 
