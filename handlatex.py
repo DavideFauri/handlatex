@@ -111,11 +111,15 @@ There is NO WARRANTY, to the extent permitted by law.
 
 # ------------------------------------------------------------------------------
 # Utility functions
+#fixed for PEP 479 python Python 3.7
 def izip(*iterables):
     """Itering zip"""
     its = [iter(it) for it in iterables]
     while True:
-        yield tuple([next(it) for it in its])
+        try:
+            yield tuple([next(it) for it in its])
+        except StopIteration:
+            return
 
 
 def autocount(method):
